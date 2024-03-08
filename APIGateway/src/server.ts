@@ -6,6 +6,7 @@ import { ROUTES } from './routes/routes';
 import { setupProxies } from './proxy/proxy';
 import { setupAuth } from './auth/auth';
 import { setupRateLimit } from './rateLimit/rateLimit';
+import { setupCheckCredit } from './creditCheck/creditcheck';
 
 const app = express();
 
@@ -16,6 +17,7 @@ const app = express();
 setupLogging(app);
 setupRateLimit(app, ROUTES);
 setupAuth(app, ROUTES);
+setupCheckCredit(app, ROUTES);
 setupProxies(app, ROUTES);
 
 /**
