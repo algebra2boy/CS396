@@ -1,12 +1,11 @@
-
-import express, { Request, Response } from 'express';
-import helmet from 'helmet';
-import cors from 'cors';
+import express from 'express';
 import 'dotenv/config';
 
 import { setupLogging } from './logging/logging';
 import { ROUTES } from './routes/routes';
 import { setupProxies } from './proxy/proxy';
+import { setupAuth } from './auth/auth';
+import { setupRateLimit } from './rateLimit/rateLimit';
 
 const app = express();
 
@@ -15,9 +14,8 @@ const app = express();
  */
 
 setupLogging(app);
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
+setupRateLimit(app, ROUTES);
+setupAuth(app, ROUTES);
 setupProxies(app, ROUTES);
 
 /**

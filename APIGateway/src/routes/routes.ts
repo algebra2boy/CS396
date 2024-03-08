@@ -3,7 +3,7 @@ interface Proxy {
     changeOrigin: boolean;
     pathRewrite: {
         [key: string]: string;
-    }
+    };
 }
 
 interface RateLimit {
@@ -19,7 +19,6 @@ export interface Route {
     proxy: Proxy;
 }
 
-
 export const ROUTES: Route[] = [
     {
         url: '/free',
@@ -30,12 +29,12 @@ export const ROUTES: Route[] = [
             max: 5, // limit each IP to 5 requests per windowMs
         },
         proxy: {
-            target: "https://www.google.com",
+            target: 'https://www.google.com',
             changeOrigin: true,
             pathRewrite: {
                 [`^/free`]: '',
             },
-        }
+        },
     },
     {
         url: '/premium',
@@ -43,11 +42,11 @@ export const ROUTES: Route[] = [
         creditCheck: true,
         // Proxy configuration containing information about the target to which the request should be redirected
         proxy: {
-            target: "https://www.google.com",
+            target: 'https://www.google.com',
             changeOrigin: true,
             pathRewrite: {
                 [`^/premium`]: '',
             },
-        }
-    }
-]
+        },
+    },
+];
