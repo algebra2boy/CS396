@@ -1,9 +1,12 @@
 
 import express, { Request, Response } from 'express';
-import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
 import 'dotenv/config';
+
+import { setupLogging } from './logging/logging';
+import { ROUTES } from './routes/routes';
+import { setupProxies } from './proxy/proxy';
 
 const app = express();
 
@@ -11,14 +14,11 @@ const app = express();
  * Dependencies configurations
  */
 
-app.use(morgan('dev'));
+setupLogging(app);
 app.use(helmet());
 app.use(cors());
 app.use(express.json());
-
-app.get('/', (req: Request, res: Response) => {
-    res.status(200).json({ message: 'Hello, world!' });
-});
+setupProxies(app, ROUTES);
 
 /**
  * Server Listening for connections
