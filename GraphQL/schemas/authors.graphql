@@ -1,0 +1,11 @@
+type Author {
+    id: Int!
+    name: String!
+    books: [Book]
+}
+
+# extending root query type we defined in index.grapqhl
+extend type Query {
+    authors: [Author]
+    author(id: Int!): Author!
+}
