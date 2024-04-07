@@ -1,9 +1,9 @@
 import express from 'express';
 import morgan from 'morgan';
-import { graphqlHTTP } from 'express-graphql';
-import { makeExecutableSchema } from '@graphql-tools/schema';
-import { loadSchemaSync } from '@graphql-tools/load';
-import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+import { graphqlHTTP } from 'express-graphql'; // let you build a graphQL API with express
+import { makeExecutableSchema } from '@graphql-tools/schema'; // let you build a schema from typeDefs and resolvers
+import { loadSchemaSync } from '@graphql-tools/load'; // let you load schema from files
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'; // oads documents and type definitions from .graphql files
 import graphqlResolver from './resolvers/index.js';
 
 const app = express();
@@ -22,7 +22,7 @@ app.use(
   '/graphql',
   graphqlHTTP({
     schema,
-    graphiql: true,
+    graphiql: true, // enable the graphiql interface (UI)
   })
 );
 

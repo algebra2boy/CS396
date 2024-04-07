@@ -1,3 +1,5 @@
+# the current version of graphql doesn't support empty schema
+# so we need to add some dummy queries and mutations
 type Query {
     _empty: String
 }

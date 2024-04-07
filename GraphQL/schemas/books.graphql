@@ -1,3 +1,4 @@
+# the schema of the book
 type Book {
     id: Int!
     title: String!
@@ -5,6 +6,7 @@ type Book {
     author: Author!
 }
 
+# the function to get all books
 extend type Query {
     books: [Book]
     book(id: Int!): Book!
