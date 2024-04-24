@@ -9,7 +9,7 @@ const text = 'Hello World!';
     let connection;
     try {
         // Connect to the RabbitMQ server
-        connection = await amqp.connect('amqp://localhost');
+        connection = await amqp.connect('amqp://127.0.0.1');
 
         // Create a channel
         const channel = await connection.createChannel();

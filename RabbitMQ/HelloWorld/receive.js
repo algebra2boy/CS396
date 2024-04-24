@@ -7,7 +7,7 @@ const queue = 'hello';
 (async () => {
     try {
         // Connect to the RabbitMQ server
-        const connection = await amqp.connect('amqp://localhost');
+        const connection = await amqp.connect('amqp://127.0.0.1');
 
         // Create a channel
         const channel = await connection.createChannel();
